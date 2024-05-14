@@ -1,11 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import exercises from './assets/data/exercises.json';
+import ExerciseItem from './src/component/ExerciseItem';
 
 export default function App() {
+  console.log(exercises);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+
+    <FlatList
+      data={exercises}
+      renderItem={({ item }) => <ExerciseItem exercise={item} />}
+      contentContainerStyle={{gap:10}}
+      keyExtractor={(item) => item.name}
+    />
+   
     </View>
   );
 }
@@ -13,8 +22,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: 'black',
+    padding: 20,
+    paddingTop: 70,
     justifyContent: 'center',
   },
+  
+
+
 });
