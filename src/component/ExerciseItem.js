@@ -1,15 +1,20 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
+import { Link } from 'expo-router'
 
 const ExerciseItem = ({exercise}) => {
 
   return (
-    <View style={styles.exContainer}>
+    <Link href={`${exercise.name}`}
+      asChild
+     style={{textDecoration:'none'}}>
+    <Pressable style={styles.exContainer}>
     <Text style={styles.exName}>{exercise.name}</Text>
     <Text style={styles.exSubTitle}>
      <Text style={styles.subValue}>{exercise.muscle}</Text> | <Text style={styles.subValue}>{exercise.equipment}</Text>
     </Text>
-  </View>
+  </Pressable>
+    </Link>
   )
 }
 
@@ -21,6 +26,15 @@ const styles = StyleSheet.create({
         padding:10,
         borderRadius:10,
         gap:5,
+        shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+
+elevation: 5
       },
       exName:{color:'#007AFF',fontSize:20,fontWeight:'500'},
       exSubTitle:{color: 'dimgray' },
